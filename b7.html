@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    input, select, button {
+      padding: 11px;
+      font-size: 17px;
+    }
+
+    input {
+      width: 230px; 
+      margin-right: 10px;
+    }
+
+    select {
+      width: 70px;
+      margin-right: 10px;
+    }
+
+    button {
+      background-color: #051506;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width: 50px;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      font-size: 19px;
+      margin-top: 21px;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="expression" readonly style="text-align: right;">
+  <br>
+
+  <div>
+    <button onclick="appendToInput('1')">1</button>
+    <button onclick="appendToInput('2')">2</button>
+    <button onclick="appendToInput('3')">3</button>
+    <button onclick="appendToInput('+')">+</button>
+  </div>
+
+  <div>
+    <button onclick="appendToInput('4')">4</button>
+    <button onclick="appendToInput('5')">5</button>
+    <button onclick="appendToInput('6')">6</button>
+    <button onclick="appendToInput('-')">-</button>
+  </div>
+
+  <div>
+    <button onclick="appendToInput('7')">7</button>
+    <button onclick="appendToInput('8')">8</button>
+    <button onclick="appendToInput('9')">9</button>
+    <button onclick="appendToInput('*')">*</button>
+  </div>
+
+  <div>
+    <button onclick="appendToInput('0')">0</button>
+    <button onclick="clearInput()">C</button>
+    <button onclick="calculate()">=</button>
+    <button onclick="appendToInput('/')">/</button>
+  </div>
+
+  <script>
+    function appendToInput(value) {
+      document.getElementById("expression").value += value;
+    }
+
+    function clearInput() {
+      document.getElementById("expression").value = "";
+    }
+
+    function calculate() {
+      var expression = document.getElementById("expression").value;
+      var result;
+
+      try {
+        result = eval(expression);
+        document.getElementById("expression").value = result;
+      } catch (error) {
+        document.getElementById("expression").value = "Invalid expression";
+      }
+    }
+  </script>
+
+</body>
+</html>
